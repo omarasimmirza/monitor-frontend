@@ -18,10 +18,10 @@ const Sidebar = () => {
                 <ul>
                     <div className="search">
                         <input type="text" placeholder="Search..." />
-                        <SearchOutlined />
+                        <SearchOutlined className="icon"/>
                     </div>
                     <p className="title">PAGES</p>
-                    <Link to="/machines" style={{ textDecoration: "none" }}>
+                    <Link to="/" style={{ textDecoration: "none" }}>
                         <li>
                             <Storage className="icon" />
                             <span>Machines</span>
