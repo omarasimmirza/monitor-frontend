@@ -2,7 +2,7 @@ import "./sidebar.scss";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
-import { Compare, Engineering, GitHub, LinkedIn, SearchOutlined, Storage } from "@mui/icons-material";
+import { AddBoxTwoTone, Compare, Engineering, GitHub, LinkedIn, SearchOutlined, Storage } from "@mui/icons-material";
 
 const Sidebar = () => {
     const { dispatch } = useContext(DarkModeContext);
@@ -37,6 +37,12 @@ const Sidebar = () => {
                         <li>
                             <Engineering className="icon" />
                             <span>Manage</span>
+                        </li>
+                    </Link>
+                    <Link to="/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <AddBoxTwoTone className="icon" />
+                            <span>Add new</span>
                         </li>
                     </Link>
                     <p className="title">SOCIALS</p>
