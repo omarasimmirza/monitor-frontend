@@ -6,14 +6,16 @@ import Widget from "../../components/widget/Widget";
 // import Chart from "../../components/chart/Chart";
 // import Table from "../../components/table/Table";
 
-const Home = () => {
+const Home = ({machines}) => {
   return (
     <div className="home">
       <Sidebar />
       <div className="homeContainer">
         {/* <Navbar /> */}
         <div className="widgets">
-          <Widget/>
+          <Widget
+            machines = {machines}
+          />
         </div>
         {/* <div className="charts">
           <Featured />

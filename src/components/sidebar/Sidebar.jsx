@@ -33,12 +33,6 @@ const Sidebar = () => {
                             <span>Compare</span>
                         </li>
                     </Link>
-                    <Link to="/manage" style={{ textDecoration: "none" }}>
-                        <li>
-                            <Engineering className="icon" />
-                            <span>Manage</span>
-                        </li>
-                    </Link>
                     <Link to="/new" style={{ textDecoration: "none" }}>
                         <li>
                             <AddBoxTwoTone className="icon" />

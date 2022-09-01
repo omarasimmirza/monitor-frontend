@@ -3,7 +3,9 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import server from "../../components/widget/server.png";
 // import Machine from '../../model/Machine';
 
-const New = () => {
+const New = ({ handlePost, ip, setIp, port, setPort,
+    username, setUsername, password, setPassword, mail,
+    setMail, alert, setAlert }) => {
     return (
         <div className="new">
             <Sidebar />
@@ -19,29 +21,29 @@ const New = () => {
                         />
                     </div>
                     <div className="right">
-                        <form>
+                        <form onSubmit={handlePost}>
                             <div className="formInput">
                                 <label>IP</label>
-                                <input type="text"/>
+                                <input type="text" id="ip" value={ip} onChange={(e) => setIp(e.target.value)} />
                             </div>
                             <div className="formInput">
                                 <label>Port</label>
-                                <input type="text"/>
+                                <input type="text" id="port" value={port} onChange={(e) => setPort(e.target.value)} />
                             </div>
                             <div className="formInput">
                                 <label>Username</label>
-                                <input type="text"/>
+                                <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                             </div>
                             <div className="formInput">
                                 <label>Password</label>
-                                <input type="password"/>
+                                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <div className="formInput">
                                 <label>Email</label>
-                                <input type="text"/>
+                                <input type="text" id="mail" value={mail} onChange={(e) => setMail(e.target.value)} />
                             </div>
                             <div className="center">
-                                <button>Send</button>
+                                <button type="submit">Send</button>
                             </div>
                         </form>
                     </div>

@@ -8,26 +8,25 @@ import { useNavigate } from "react-router-dom";
 // import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 // import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 // import axios from 'axios';
-import service from '../../service/service';
+// import service from '../../service/service';
 
-const Widget = () => {
+const Widget = ({machines}) => {
 
-    const [machines, setMachines] = useState([]);
+    // const [machines, setMachines] = useState([]);
     const navigate = useNavigate();
 
-    const fetchMachines = () => {
-        service.getAll().then(res => {
-            console.log(res);
-            setMachines(res.data);
-        });
-    };
+    // const fetchMachines = () => {
+    //     service.getAll().then(res => {
+    //         console.log(res);
+    //         setMachines(res.data);
+    //     });
+    // };
 
-    useEffect(() => {
-        fetchMachines();
-    }, []);
+    // useEffect(() => {
+    //     fetchMachines();
+    // }, []);
 
     const getDetails = (ip) => {
-        console.log("here")
         navigate(`${ip}`)   
     }
 

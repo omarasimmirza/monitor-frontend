@@ -27,11 +27,6 @@
         background-color: rgb(32, 30, 30);
         border-color: #333;
 
-        .top {
-            .logo {
-                color: #999;
-            }
-        }
 
         hr {
             border-color: #333;
@@ -41,10 +36,6 @@
             li {
                 &:hover {
                     background-color: #333;
-                }
-
-                .icon {
-                    color: #999;
                 }
             }
         }
