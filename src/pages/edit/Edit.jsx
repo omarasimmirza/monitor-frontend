@@ -2,30 +2,19 @@ import "./edit.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import server from "../../components/widget/server.png"
 import { useParams, useNavigate } from "react-router-dom";
-import service from "../../service/service"
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-const Edit = ({handleGetOne, oneMachine, mail, setMail}) => {
+const Edit = ({ handleEdit, handleGetOne, oneMachine, mail, setMail }) => {
 
     const { ip } = useParams();
-    // const [machine, setMachine] = useState([]);
-    // const navigate = useNavigate();
-    
-    // const fetchMachine = () => {
-    //     service.get(ip).then(res => {
-    //         setMachine(res.data);
-    //     });
-    // };
+    const navigate = useNavigate();
 
-    // const edit = () => {
-    //     navigate(`edit`)
-    // }
+    const done = () => {
+        handleEdit(ip)
+        navigate(`/${ip}`)
+        window.location.reload(false)
+    }
 
-    // const deleteMachine = () => {
-    //     handleDelete(ip);
-    //     navigate(`/`)
-    // }
-    
     useEffect(() => {
         handleGetOne(ip);
     }, []);
@@ -38,8 +27,7 @@ const Edit = ({handleGetOne, oneMachine, mail, setMail}) => {
                     <div className="editContainer">
                         <div className="top">
                             <div className="left">
-                                {/* <div className="editButton" onClick={() => edit()}>Edit</div> */}
-                                <div className="doneButton">Done</div>
+                                <div className="doneButton" onClick={() => done()}>Done</div>
                                 <h1 className="title">Information</h1>
                                 <h1 className="itemTitle">{single.ip}</h1>
                                 <div className="item">
@@ -59,7 +47,7 @@ const Edit = ({handleGetOne, oneMachine, mail, setMail}) => {
                                         </div>
                                         <div className="editItem">
                                             <span className="itemKey">Email:</span>
-                                            {/* <span className="itemValue">{single.mail}</span> */}
+                                            { }
                                             <input className="inputField" type="text" placeholder="New Email" id="mail" value={mail} onChange={(e) => setMail(e.target.value)} />
                                         </div>
                                         <div className="editItem">

@@ -1,45 +1,55 @@
 import "./chart.scss";
-import React, { useState, useEffect } from 'react'
-import server from './server.png';
-// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-// import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-// import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-// import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-// import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import axios from 'axios';
+import {
+    AreaChart,
+    Area,
+    XAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer,
+} from "recharts";
 
-const Chart = () => {
-
-    const [machines, setMachines] = useState([]);
-
-    const fetchMachines = () => {
-        axios.get("http://127.0.0.1:8080/").then(res => {
-            console.log(res);
-            setMachines(res.data);
-        });
-    };
-
-    useEffect(() => {
-        fetchMachines();
-    }, []);
-
-    return machines.map((machine, index) => {
-        return (
-            <div key={index}>
-                <div className="chart">
-                    <div className="container">
-                        <img className="image" src={server} alt="server"/>
-                        <span className="title">{machine.ip}</span>
-                        <div className="align">
-                            <span className="info">port: {machine.port}</span>
-                            <span className="info">username: {machine.username}</span>
-                            <span className="link">mail: {machine.mail}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    });
+const Chart = ({ machines }) => {
+    const cpu_data = []
+    const memory_data = []
+    for (var i = 0; i < machines.length; i++) {
+        var mem_dict = { name: machines[i].ip, Total: parseFloat(machines[i].memory_usage)};
+        var cpu_dict = { name: machines[i].ip, Total: parseFloat(machines[i].cpu_usage)};
+        cpu_data[i] = cpu_dict;
+        memory_data[i] = mem_dict;
+    }
+    // {
+        // console.log(memory_data);
+    // }
+    return (
+        <div className="chart">
+            <div className="title">Compare (%)</div>
+            <ResponsiveContainer width="100%" aspect={3 / 1}>
+                <AreaChart
+                    width={730}
+                    height={250}
+                    data={memory_data}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                >
+                    <defs>
+                        <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                        </linearGradient>
+                    </defs>
+                    <XAxis dataKey="name" stroke="gray" />
+                    <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
+                    <Tooltip />
+                    <Area
+                        type="monotone"
+                        dataKey="Total"
+                        stroke="#8884d8"
+                        fillOpacity={1}
+                        fill="url(#total)"
+                    />
+                </AreaChart>
+            </ResponsiveContainer>
+        </div>
+    );
 };
 
 export default Chart;

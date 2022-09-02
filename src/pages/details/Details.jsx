@@ -2,20 +2,13 @@ import "./details.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import server from "../../components/widget/server.png"
 import { useParams, useNavigate } from "react-router-dom";
-import service from "../../service/service"
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 const Details = ({handleGetOne, handleDelete, oneMachine}) => {
 
     const { ip } = useParams();
-    // const [machine, setMachine] = useState([]);
     const navigate = useNavigate();
     
-    // const fetchMachine = () => {
-    //     service.get(ip).then(res => {
-    //         setMachine(res.data);
-    //     });
-    // };
 
     const edit = () => {
         navigate(`edit`)
@@ -24,6 +17,7 @@ const Details = ({handleGetOne, handleDelete, oneMachine}) => {
     const deleteMachine = () => {
         handleDelete(ip);
         navigate(`/`)
+        window.location.reload(false);
     }
     
     useEffect(() => {

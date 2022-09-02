@@ -1,11 +1,11 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import server from "../../components/widget/server.png";
-// import Machine from '../../model/Machine';
 
 const New = ({ handlePost, ip, setIp, port, setPort,
     username, setUsername, password, setPassword, mail,
     setMail, alert, setAlert }) => {
+        
     return (
         <div className="new">
             <Sidebar />

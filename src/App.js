@@ -1,7 +1,6 @@
 import Home from "./pages/home/Home";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./style/dark.scss";
-// import { useContext } from "react";
 import { useContext, useState, useEffect } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import New from "./pages/new/New";
@@ -48,7 +47,7 @@ function App() {
   }
 
   const handleEdit = async (ip) => {
-    const updatedMachine = { port: port, username: username, mail: mail }
+    const updatedMachine = { mail: mail }
     try {
       await service.update(ip, updatedMachine);
     }
@@ -100,34 +99,21 @@ function App() {
               alert={alert}
               setAlert={setAlert}
             />} />
-            <Route path="compare" element={<Compare />} />
+            <Route path="compare" element={<Compare 
+              machines={machines}
+            />} />
             <Route path=":ip/edit" element={<Edit 
               handleEdit={handleEdit}
               handleGetOne={handleGetOne}
               oneMachine={oneMachine}
+              mail={mail}
+              setMail={setMail}
             />} />
             <Route path=":ip" element={<Details 
               handleGetOne={handleGetOne}
               handleDelete={handleDelete}
               oneMachine={oneMachine}
             />} />
-            {/* <Route path="login" element={<Login />} />
-            <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
-              />
-            </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
-            </Route> */}
           </Route>
         </Routes>
       </BrowserRouter>

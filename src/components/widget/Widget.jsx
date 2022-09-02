@@ -1,33 +1,14 @@
 import "./widget.scss";
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import server from './server.png';
 import { useNavigate } from "react-router-dom";
-// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-// import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-// import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-// import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-// import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-// import axios from 'axios';
-// import service from '../../service/service';
 
-const Widget = ({machines}) => {
+const Widget = ({ machines }) => {
 
-    // const [machines, setMachines] = useState([]);
     const navigate = useNavigate();
 
-    // const fetchMachines = () => {
-    //     service.getAll().then(res => {
-    //         console.log(res);
-    //         setMachines(res.data);
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     fetchMachines();
-    // }, []);
-
     const getDetails = (ip) => {
-        navigate(`${ip}`)   
+        navigate(`/${ip}`)
     }
 
     return machines.map((machine, index) => {
